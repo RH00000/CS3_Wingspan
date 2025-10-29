@@ -10,9 +10,10 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.util.*;
 
-public class StartPagePanel implements MouseListener{
+public class StartPagePanel extends JPanel implements MouseListener{
 
-	BufferedImage logo;
+	private BufferedImage logo;
+	private JButton startBtn;
 	
 	public StartPagePanel() {
 		addMouseListener();
@@ -23,11 +24,17 @@ public class StartPagePanel implements MouseListener{
 		catch(Exception e) {
 			System.out.println("Error");
 		}
+		
+		
+		//button
+		startBtn = new JButton("BEGIN");
+		
+		
 	}
 	
 
 	public void paint(Graphics g) {
-		g.drawImage(logo,500, 200, logo.getWidth(), logo.getHeight(), null);
+		// g.drawImage(logo,500, 200, logo.getWidth(), logo.getHeight(), null);
 	}
 	private void addMouseListener() {}
 	public void mouseClicked(MouseEvent e) {}
