@@ -34,7 +34,7 @@ public class StartPagePanel extends JPanel implements MouseListener{
 	
 
 	public void paint(Graphics g) {
-		// g.drawImage(logo,500, 200, logo.getWidth(), logo.getHeight(), null);
+		g.drawImage(logo,400, 200, logo.getWidth()*27/10, logo.getHeight()*27/10, null);
 	}
 	private void addMouseListener() {}
 	public void mouseClicked(MouseEvent e) {}
