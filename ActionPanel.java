@@ -12,29 +12,69 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
 
-public class ActionPanel {
+public class ActionPanel extends JPanel{
 
-	public JButton gainFoodBtn = new JButton();
-	public JButton layEggsBtn = new JButton();
-	public JButton drawCardsBtn = new JButton();
-	public JButton playBirdBtn = new JButton();
-	public JButton exchangeFood = new JButton();
+	public JButton gainFoodBtn = new JButton("Gain Food");
+	public JButton layEggsBtn = new JButton("Lay Eggs");
+	public JButton drawCardsBtn = new JButton("Draw Bird");
+	public JButton playBirdBtn = new JButton("Play Bird");
+	public JButton exchangeFood = new JButton("Exchange");
 	public JButton exchangeDice = new JButton();
 	public JButton exchangeCard = new JButton();
-	public JButton rerollDice = new JButton();
+	public JButton rerollDice = new JButton("ReRoll Dice");
 
+	public ActionPanel() {
+		try {
+			setLayout(null);
+			gainFoodBtn.setBounds(10, 10, 100, 30);
+			gainFoodBtn.setBackground(Color.blue);
+			gainFoodBtn.setForeground(Color.white);
+			this.add(gainFoodBtn);
+			
+			setLayout(null);
+			layEggsBtn.setBounds(120, 10, 100, 30);
+			layEggsBtn.setBackground(Color.blue);
+			layEggsBtn.setForeground(Color.white);
+			this.add(layEggsBtn);
+			
+			setLayout(null);
+			drawCardsBtn.setBounds(230, 10, 100, 30);
+			drawCardsBtn.setBackground(Color.blue);
+			drawCardsBtn.setForeground(Color.white);
+			this.add(drawCardsBtn);
+			
+			setLayout(null);
+			playBirdBtn.setBounds(340, 10, 100, 30);
+			playBirdBtn.setBackground(Color.blue);
+			playBirdBtn.setForeground(Color.white);
+			this.add(playBirdBtn);
+			
+			setLayout(null);
+			exchangeFood.setBounds(340, 10, 100, 30);
+			exchangeFood.setBackground(Color.blue);
+			exchangeFood.setForeground(Color.white);
+			this.add(exchangeFood);
+			
+			setLayout(null);
+			rerollDice.setBounds(450, 10, 100, 30);
+			rerollDice.setBackground(Color.blue);
+			rerollDice.setForeground(Color.white);
+			this.add(rerollDice);
+		}
+		
+		catch(Exception e) {
+			System.out.println("e");
+		}
+	}
 
 	public void paint(Graphics g) {
+		super.paint(g);
 		
 	}
 
-	public void drawActions(Graphics g) {
-		
-	}
+	//public void drawActions(Graphics g) {}
 	
-	public void updateActionas(GameEvent e) {
-		
-	}
+	//public void updateActions(GameEvent e) { }
 
 
 
