@@ -30,6 +30,8 @@ public class BoardPanel extends JPanel {
 	
 	public void paint(Graphics g) {
 
-		g.drawImage(b,10 , 30, b.getWidth(), b.getHeight(), null);
+		g.drawImage(b,0 , 0, this.getWidth(), this.getHeight(), null);
 	}
 }
+
+
