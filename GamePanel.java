@@ -10,16 +10,48 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.util.*;
 
-public class GamePanel {
+public class GamePanel extends JPanel {
 
+	private StartPagePanel startPanel;
+	private RoundPanel roundPanel;
+	private JButton btn;
 	
-	public GamePanel() {
+	private CardLayout c;
+	
+	public GamePanel(CardLayout c) {
+		
+		this.c = c;
+		startPanel = new StartPagePanel();
+		roundPanel = new RoundPanel();
+		btn = startPanel.getBtn();
+		
+		setup();
+		
+		switchPanels();
 		
 	}
 	
+
 	public void paint(Graphics g) {
-		
+		super.paint(g);
 	}
 	
+	public void setup() {
+		
+		setLayout(c);
+		startPanel.setPreferredSize(new Dimension(1600, 1000));
+		roundPanel.setPreferredSize(new Dimension(1600, 1000));
+		
+		add(startPanel, "start");
+		add(roundPanel, "round");
+	}
+	
+	public void switchPanels() {
+		// TODO Auto-generated method stub
+		btn.addActionListener((e) -> {
+			
+			c.show(this, "round");
+		});
+	}
 	
 }
