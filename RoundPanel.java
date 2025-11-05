@@ -5,12 +5,11 @@ import java.io.*;
 import java.awt.image.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
-import java.awt.Font;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.util.*;
 
-public class RoundPanel {
+public class RoundPanel extends JPanel {
 	
 	private GameStatePanel gamestatepanel;
 	private BirdFeederPanel birdfeederpanel;
@@ -20,6 +19,7 @@ public class RoundPanel {
 	private DeckPanel deckpanel;
 	private ActionPanel actionpanel;
 	private BoardPanel boardpanel;
+
 	
 	public RoundPanel() {
 		
@@ -29,11 +29,15 @@ public class RoundPanel {
 		catch(Exception e) {
 			System.out.println("error!");
 		}
+		
 	}
 	
 	
 	public void paint(Graphics g) {
+		super.paint(g);
 		
+		g.setColor(Color.blue);
+		g.drawString("round panel", 100, 100);
 	}
 
 }
