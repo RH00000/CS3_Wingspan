@@ -15,7 +15,7 @@ public class RoundPanel extends JPanel {
 	private GameStatePanel gamestatepanel;
 	private BirdFeederPanel birdfeederpanel;
 	private HandPanel handpanel;
-	private RoundGoalPanel roundgoalpanel;
+	
 	private TrayPanel traypanel;
 	private DeckPanel deckpanel;
 	
@@ -24,6 +24,7 @@ public class RoundPanel extends JPanel {
 	
 	private ActionPanel actionpanel;
 	private BoardPanel boardpanel;
+	private RoundGoalPanel roundgoalpanel;
 	
 	public RoundPanel() {
 		
@@ -38,6 +39,7 @@ public class RoundPanel extends JPanel {
 		
 		actionpanel = new ActionPanel();
 		boardpanel = new BoardPanel();
+		roundgoalpanel = new RoundGoalPanel();
 		
 		addPanels();
 		
@@ -56,11 +58,14 @@ public class RoundPanel extends JPanel {
 		
 		add(actionpanel);
 		add(boardpanel);
+		add(roundgoalpanel);
 		
 		actionpanel.setBounds(0, 0, 1600, 100);
 		boardpanel.setLocation(0, 0);
 		boardpanel.setPreferredSize(new Dimension(800, 550));
 		boardpanel.setBounds(0, 100, 800, 550);
+		
+		roundgoalpanel.setBounds(1100, 600, 500, 330);
 	}
 
 }
