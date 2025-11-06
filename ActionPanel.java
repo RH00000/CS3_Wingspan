@@ -7,7 +7,6 @@ import java.io.*;
 import java.awt.image.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
-import java.awt.Font;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
@@ -26,7 +25,7 @@ public class ActionPanel extends JPanel{
 	public ActionPanel() {
 		
 		setPreferredSize(new Dimension(1600, 100));
-		setBackground(Color.red); //testing only
+		//setBackground(Color.red); //testing only
 		
 		try {			
 			setLayout(new FlowLayout());
@@ -39,28 +38,27 @@ public class ActionPanel extends JPanel{
 
 			setLayout(null);
 			gainFoodBtn.setBounds(10, 10, 100, 30);
-			gainFoodBtn.setBackground(Color.blue);
+			gainFoodBtn.setBackground(new Color(98, 189, 175));
 			gainFoodBtn.setForeground(Color.white);
 			
-			
 			layEggsBtn.setBounds(120, 10, 100, 30);
-			layEggsBtn.setBackground(Color.blue);
+			layEggsBtn.setBackground(new Color(98, 189, 175));
 			layEggsBtn.setForeground(Color.white);
 			
 			drawCardsBtn.setBounds(230, 10, 100, 30);
-			drawCardsBtn.setBackground(Color.blue);
+			drawCardsBtn.setBackground(new Color(98, 189, 175));
 			drawCardsBtn.setForeground(Color.white);
 			
 			playBirdBtn.setBounds(340, 10, 100, 30);
-			playBirdBtn.setBackground(Color.blue);
+			playBirdBtn.setBackground(new Color(98, 189, 175));
 			playBirdBtn.setForeground(Color.white);
 			
 			exchangeFood.setBounds(340, 10, 100, 30);
-			exchangeFood.setBackground(Color.blue);
+			exchangeFood.setBackground(new Color(98, 189, 175));
 			exchangeFood.setForeground(Color.white);
 			
 			rerollDice.setBounds(450, 10, 100, 30);
-			rerollDice.setBackground(Color.blue);
+			rerollDice.setBackground(new Color(98, 189, 175));
 			rerollDice.setForeground(Color.white);
 		}
 		
