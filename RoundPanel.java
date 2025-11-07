@@ -12,19 +12,21 @@ import java.util.*;
 public class RoundPanel extends JPanel {
 	
 	/*
-	private GameStatePanel gamestatepanel;
 	private BirdFeederPanel birdfeederpanel;
 	private HandPanel handpanel;
 	
-	private TrayPanel traypanel;
 	private DeckPanel deckpanel;
 	
 	
 	*/
-	
+	private TrayPanel traypanel;
 	private ActionPanel actionpanel;
 	private BoardPanel boardpanel;
 	private RoundGoalPanel roundgoalpanel;
+	private GameStatePanel gamestatepanel1;
+	private GameStatePanel gamestatepanel2;
+
+
 	
 	public RoundPanel() {
 		
@@ -40,6 +42,9 @@ public class RoundPanel extends JPanel {
 		actionpanel = new ActionPanel();
 		boardpanel = new BoardPanel();
 		roundgoalpanel = new RoundGoalPanel();
+		traypanel = new TrayPanel();
+		gamestatepanel1 = new GameStatePanel();
+		gamestatepanel2 = new GameStatePanel();
 		
 		addPanels();
 		
@@ -59,13 +64,21 @@ public class RoundPanel extends JPanel {
 		add(actionpanel);
 		add(boardpanel);
 		add(roundgoalpanel);
+		add(traypanel);
+		add(gamestatepanel1);
+		add(gamestatepanel2);
 		
-		actionpanel.setBounds(0, 0, 1600, 100);
+		actionpanel.setBounds(0, 0, 1000, 50);
 		boardpanel.setLocation(0, 0);
 		boardpanel.setPreferredSize(new Dimension(800, 550));
-		boardpanel.setBounds(0, 100, 800, 550);
+		boardpanel.setBounds(0, 50, 800, 550);
 		
-		roundgoalpanel.setBounds(1100, 600, 500, 330);
+		roundgoalpanel.setBounds(1150, 650, 400, 264);
+		
+		traypanel.setBounds(820, 325, 420,210);
+		
+		gamestatepanel1.setBounds(1300, 10, 300, 300 );
+		gamestatepanel2.setBounds(1300, 320, 300, 300);
 	}
 
 }
