@@ -13,20 +13,38 @@ import java.util.*;
 
 public class BirdFeederPanel extends JPanel {
 
+	private final int FOOD_WORM, FOOD_SEED, FOOD_FISH, FOOD_MOUSE, FOOD_FRUIT, FOOD_WORM_OR_SEED;
 	public ArrayList<Integer> foodInside;
 	public ArrayList<Integer> foodOutside;
-	private final int NUM_DICE = 5;
+	private final int NUM_DICE;
 
 	public BirdFeederPanel() {
 
+		FOOD_WORM = 1;
+		FOOD_SEED = 2;
+		FOOD_FISH = 3;
+		FOOD_MOUSE = 4;
+		FOOD_FRUIT = 5;
+		FOOD_WORM_OR_SEED = 6;
+		
 		foodInside = new ArrayList<>();
 		foodOutside = new ArrayList<>();
+		
+		NUM_DICE = 5;
+		
+		reroll();
 	}
 
 	public void drawBirdFeeder(Graphics g) {
 
 		super.paint(g);
-
+		g.setColor(Color.darkGray);
+		g.fillRect(0, 0, 1000, 1000);
+		
+		for(int i=0; i<foodInside.size(); i++) {
+			g.drawString(""+foodInside.get(i), 1400+i*10, 500);
+		}
+		
 	}
 
 	public void updateBirdFeeder(ArrayList<Integer> foodInside, ArrayList<Integer> foodOutside) {
@@ -43,8 +61,13 @@ public class BirdFeederPanel extends JPanel {
 
 		for (int i = 0; i < NUM_DICE; i++) {
 
-			// make each dice random, foodInside.add();
+			Random random = new Random();
+			int r = random.nextInt(6) + 1;
+			
+			foodInside.add(r);
 		}
+		
+		repaint();
 	}
 
 	public void take(int die) { // take a die from inside to outside
@@ -56,6 +79,8 @@ public class BirdFeederPanel extends JPanel {
 				break;
 			}
 		}
+		
+		reroll();
 	}
 
 }
