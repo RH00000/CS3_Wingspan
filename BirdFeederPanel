@@ -33,20 +33,23 @@ public class BirdFeederPanel extends JPanel {
 		NUM_DICE = 5;
 		
 		reroll();
+
 	}
 
 	public void drawBirdFeeder(Graphics g) {
 
 		super.paint(g);
 		g.setColor(Color.black);
-		g.fillRect(0, 0, 100, 100);
-		
-		reroll();
-		
+
 		for(int i=0; i<foodInside.size(); i++) {
-			g.drawString(""+foodInside.get(i), 0+i*20, 0);
+			//System.out.println(""+foodInside.get(i));
+			g.drawString(""+foodInside.get(i), 0+i*10, 0);
 		}
-		
+
+	}
+	
+	public void paint(Graphics g) {
+		drawBirdFeeder(g);
 	}
 
 	public void updateBirdFeeder(ArrayList<Integer> foodInside, ArrayList<Integer> foodOutside) {
@@ -68,7 +71,7 @@ public class BirdFeederPanel extends JPanel {
 			
 			foodInside.add(r);
 		}
-		
+
 		repaint();
 	}
 
@@ -85,5 +88,10 @@ public class BirdFeederPanel extends JPanel {
 		reroll();
 	}
 	
-
+	private void printList(ArrayList<Integer> list) {
+		System.out.println("list");
+		for(int i=0; i<list.size(); i++) {
+			System.out.println(list.get(i)+" ");
+		}
+	}
 }
