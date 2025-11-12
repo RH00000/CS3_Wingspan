@@ -6,13 +6,14 @@ import java.awt.image.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.*;
 
 public class RoundPanel extends JPanel {
 	
 	/*
-	private BirdFeederPanel birdfeederpanel;
 	private HandPanel handpanel;
 	
 	private DeckPanel deckpanel;
@@ -25,6 +26,8 @@ public class RoundPanel extends JPanel {
 	private RoundGoalPanel roundgoalpanel;
 	private GameStatePanel gamestatepanel1;
 	private GameStatePanel gamestatepanel2;
+	private BirdFeederPanel birdfeederpanel;
+
 
 
 	
@@ -45,6 +48,7 @@ public class RoundPanel extends JPanel {
 		traypanel = new TrayPanel();
 		gamestatepanel1 = new GameStatePanel();
 		gamestatepanel2 = new GameStatePanel();
+		birdfeederpanel = new BirdFeederPanel();
 		
 		addPanels();
 		
@@ -57,6 +61,13 @@ public class RoundPanel extends JPanel {
 		g.setColor(Color.blue);
 		//g.drawString("round panel", 100, 100);
 		
+		 actionpanel.rerollDice.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            birdfeederpanel.reroll();
+	            }
+	        });
+		
 	}
 	
 	public void addPanels() {
@@ -67,6 +78,7 @@ public class RoundPanel extends JPanel {
 		add(traypanel);
 		add(gamestatepanel1);
 		add(gamestatepanel2);
+		add(birdfeederpanel);
 		
 		actionpanel.setBounds(0, 0, 1000, 50);
 		boardpanel.setLocation(0, 0);
@@ -79,6 +91,8 @@ public class RoundPanel extends JPanel {
 		
 		gamestatepanel1.setBounds(1300, 10, 300, 300 );
 		gamestatepanel2.setBounds(1300, 320, 300, 300);
+		
+		birdfeederpanel.setBounds(700, 610, 420, 300);
 	}
 
 }
