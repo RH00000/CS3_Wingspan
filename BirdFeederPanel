@@ -13,7 +13,7 @@ import java.util.*;
 
 public class BirdFeederPanel extends JPanel {
 
-	private final int FOOD_WORM, FOOD_SEED, FOOD_FISH, FOOD_MOUSE, FOOD_FRUIT, FOOD_WORM_OR_SEED;
+	private final int FOOD_WORM, FOOD_WHEAT, FOOD_FISH, FOOD_MOUSE, FOOD_FRUIT,FOOD_WORM_OR_WHEAT;
 	public ArrayList<Integer> foodInside;
 	public ArrayList<Integer> foodOutside;
 	private final int NUM_DICE;
@@ -25,30 +25,59 @@ public class BirdFeederPanel extends JPanel {
 	BufferedImage b6;
 
 	public BirdFeederPanel() {
-
 		FOOD_WORM = 1;
-		FOOD_SEED = 2;
+		FOOD_WHEAT = 2;
 		FOOD_FISH = 3;
 		FOOD_MOUSE = 4;
 		FOOD_FRUIT = 5;
-		FOOD_WORM_OR_SEED = 6;
-		
+		FOOD_WORM_OR_WHEAT = 6;
+		NUM_DICE = 6;
 		foodInside = new ArrayList<>();
 		foodOutside = new ArrayList<>();
-		
-		NUM_DICE = 5;
-		
 		reroll();
+
+		try {
+			b1 =  ImageIO.read(BirdFeederPanel.class.getResource("/images/worm.png"));
+			b2 =  ImageIO.read(BirdFeederPanel.class.getResource("/images/wheat.png"));
+			b3 =  ImageIO.read(BirdFeederPanel.class.getResource("/images/fish.png"));
+			b4 =  ImageIO.read(BirdFeederPanel.class.getResource("/images/mouse.png"));
+			b5 =  ImageIO.read(BirdFeederPanel.class.getResource("/images/berry.png"));
+			b6=  ImageIO.read(BirdFeederPanel.class.getResource("/images/wormOrWheat.png"));
+		}
+		catch(Exception e) {
+			System.out.println("error");		}
 
 	}
 
-	public void drawBirdFeeder(Graphics g) {
+	public void drawBirdFeeder(Graphics g) {		
+		g.setColor(new Color(137,81,41));
 
-		g.setColor(Color.black);
-
+		g.fillRect(0, 0, 75*6, 120);
+		int x = -55; //ADD BY 65 EACH TIME
+		int y = 30; 
 		for(int i=0; i<foodInside.size(); i++) {
-			g.drawString(""+foodInside.get(i), 0+i*10, 20);
+			x+=65;
+			if(foodInside.get(i)==1) {
+				g.drawImage(b1, x, y, 65,65 , null);
+			} 
+			if(foodInside.get(i)==2) {
+				g.drawImage(b2, x, y, 65,65 , null);
+			}
+			if(foodInside.get(i)==3) {
+				g.drawImage(b3, x, y, 65,65 , null);
+			}
+			if(foodInside.get(i)==4) {
+				g.drawImage(b4, x, y, 65,65 , null);
+			}
+			if(foodInside.get(i)==5) {
+				g.drawImage(b5, x, y, 65,65 , null);
+			}
+			if(foodInside.get(i)==6) {
+				g.drawImage(b6, x, y, 65,65 , null);
+			}
 		}
+		
+		
 
 	}
 	
