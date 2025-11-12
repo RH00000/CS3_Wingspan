@@ -17,6 +17,12 @@ public class BirdFeederPanel extends JPanel {
 	public ArrayList<Integer> foodInside;
 	public ArrayList<Integer> foodOutside;
 	private final int NUM_DICE;
+	BufferedImage b1;
+	BufferedImage b2;
+	BufferedImage b3;
+	BufferedImage b4;
+	BufferedImage b5;
+	BufferedImage b6;
 
 	public BirdFeederPanel() {
 
