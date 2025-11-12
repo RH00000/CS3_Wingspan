@@ -76,8 +76,29 @@ public class BirdFeederPanel extends JPanel {
 				g.drawImage(b6, x, y, 65,65 , null);
 			}
 		}
-		
-		
+		y= 135;
+		x=-55;
+		for(int i = 0 ; i<foodOutside.size(); i++) {
+			x+=65;
+			if(foodInside.get(i)==1) {
+				g.drawImage(b1, x, y, 65,65 , null);
+			} 
+			if(foodInside.get(i)==2) {
+				g.drawImage(b2, x, y, 65,65 , null);
+			}
+			if(foodInside.get(i)==3) {
+				g.drawImage(b3, x, y, 65,65 , null);
+			}
+			if(foodInside.get(i)==4) {
+				g.drawImage(b4, x, y, 65,65 , null);
+			}
+			if(foodInside.get(i)==5) {
+				g.drawImage(b5, x, y, 65,65 , null);
+			}
+			if(foodInside.get(i)==6) {
+				g.drawImage(b6, x, y, 65,65 , null);
+			}
+		}
 
 	}
 	
