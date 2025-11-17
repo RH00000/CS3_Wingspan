@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.*;
 
-public class RoundPanel extends JPanel {
+public class RoundPanel extends JPanel implements KeyListener {
 
 	/*
 	 * private HandPanel handpanel;
@@ -35,6 +35,7 @@ public class RoundPanel extends JPanel {
 	public RoundPanel() {
 
 		setLayout(null);
+		setFocusable(true);
 
 		try {
 
@@ -53,6 +54,8 @@ public class RoundPanel extends JPanel {
 		currentPlayer = player1;
 
 		addPanels();
+		
+		addKeyListener(this);
 
 	}
 
@@ -71,6 +74,7 @@ public class RoundPanel extends JPanel {
 		
 		actionpanel.gainFoodBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				currentPlayer.isChoosing = true;
 				
 			}
 		});
@@ -110,6 +114,30 @@ public class RoundPanel extends JPanel {
 		
 		currentPlayer = player1;
 		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) { //NOT WORKING
+		// TODO Auto-generated method stub
+		System.out.println("sldkjfsf");
+		System.out.println(e.getKeyChar());
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void addNotify() {
+		super.addNotify();
+		requestFocus();
 	}
 
 }
