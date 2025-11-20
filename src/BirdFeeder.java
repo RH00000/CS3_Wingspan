@@ -9,7 +9,8 @@ public class BirdFeeder {
             FoodType.SEED,
             FoodType.FISH,
             FoodType.RODENT,
-            FoodType.FRUIT
+            FoodType.FRUIT,
+            FoodType.WILD
     };
 
     private final List<Die> dice;
@@ -83,6 +84,14 @@ public class BirdFeeder {
             }
         }
         return false;
+    }
+    
+    public List<Die> getDice() {
+    	return dice;
+    }
+    
+    public List<Die> getDiceOutside() {
+    	return diceOutside;
     }
 
     public static class Die {
