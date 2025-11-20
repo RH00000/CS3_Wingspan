@@ -13,10 +13,8 @@ import java.util.*;
 
 public class BirdFeederPanel extends JPanel {
 
-	private final int FOOD_WORM, FOOD_WHEAT, FOOD_FISH, FOOD_MOUSE, FOOD_FRUIT,FOOD_WORM_OR_WHEAT;
-	public ArrayList<Integer> foodInside;
-	public ArrayList<Integer> foodOutside;
-	private final int NUM_DICE;
+	public BirdFeeder birdFeeder;
+
 	BufferedImage b1;
 	BufferedImage b2;
 	BufferedImage b3;
@@ -25,16 +23,8 @@ public class BirdFeederPanel extends JPanel {
 	BufferedImage b6;
 
 	public BirdFeederPanel() {
-		FOOD_WORM = 1;
-		FOOD_WHEAT = 2;
-		FOOD_FISH = 3;
-		FOOD_MOUSE = 4;
-		FOOD_FRUIT = 5;
-		FOOD_WORM_OR_WHEAT = 6;
-		NUM_DICE = 6;
-		foodInside = new ArrayList<>();
-		foodOutside = new ArrayList<>();
-		reroll();
+
+		birdFeeder = new BirdFeeder();
 
 		try {
 			b1 =  ImageIO.read(BirdFeederPanel.class.getResource("/images/worm.png"));
@@ -45,7 +35,8 @@ public class BirdFeederPanel extends JPanel {
 			b6=  ImageIO.read(BirdFeederPanel.class.getResource("/images/wormOrWheat.png"));
 		}
 		catch(Exception e) {
-			System.out.println("error");		}
+			System.out.println("error");		
+		}
 
 	}
 
@@ -55,47 +46,47 @@ public class BirdFeederPanel extends JPanel {
 		g.fillRect(0, 0, 75*6, 120);
 		int x = -55; //ADD BY 65 EACH TIME
 		int y = 30; 
-		for(int i=0; i<foodInside.size(); i++) {
+		for(int i=0; i<birdFeeder.getDice().size(); i++) {
 			x+=65;
-			if(foodInside.get(i)==1) {
+			if(birdFeeder.getDice().get(i).getFace().equals(FoodType.WORM)) {
 				g.drawImage(b1, x, y, 65,65 , null);
 			} 
-			if(foodInside.get(i)==2) {
+			if(birdFeeder.getDice().get(i).getFace().equals(FoodType.SEED)) {
 				g.drawImage(b2, x, y, 65,65 , null);
 			}
-			if(foodInside.get(i)==3) {
+			if(birdFeeder.getDice().get(i).getFace().equals(FoodType.FISH)) {
 				g.drawImage(b3, x, y, 65,65 , null);
 			}
-			if(foodInside.get(i)==4) {
+			if(birdFeeder.getDice().get(i).getFace().equals(FoodType.RODENT)) {
 				g.drawImage(b4, x, y, 65,65 , null);
 			}
-			if(foodInside.get(i)==5) {
+			if(birdFeeder.getDice().get(i).getFace().equals(FoodType.FRUIT)) {
 				g.drawImage(b5, x, y, 65,65 , null);
 			}
-			if(foodInside.get(i)==6) {
+			if(birdFeeder.getDice().get(i).getFace().equals(FoodType.WILD)) {
 				g.drawImage(b6, x, y, 65,65 , null);
 			}
 		}
 		y= 135;
 		x=-55;
-		for(int i = 0 ; i<foodOutside.size(); i++) {
+		for(int i = 0 ; i<birdFeeder.getDiceOutside().size(); i++) {
 			x+=65;
-			if(foodInside.get(i)==1) {
+			if(birdFeeder.getDiceOutside().get(i).getFace().equals(FoodType.WORM)) {
 				g.drawImage(b1, x, y, 65,65 , null);
 			} 
-			if(foodInside.get(i)==2) {
+			if(birdFeeder.getDiceOutside().get(i).getFace().equals(FoodType.SEED)) {
 				g.drawImage(b2, x, y, 65,65 , null);
 			}
-			if(foodInside.get(i)==3) {
+			if(birdFeeder.getDiceOutside().get(i).getFace().equals(FoodType.FISH)) {
 				g.drawImage(b3, x, y, 65,65 , null);
 			}
-			if(foodInside.get(i)==4) {
+			if(birdFeeder.getDiceOutside().get(i).getFace().equals(FoodType.RODENT)) {
 				g.drawImage(b4, x, y, 65,65 , null);
 			}
-			if(foodInside.get(i)==5) {
+			if(birdFeeder.getDiceOutside().get(i).getFace().equals(FoodType.FRUIT)) {
 				g.drawImage(b5, x, y, 65,65 , null);
 			}
-			if(foodInside.get(i)==6) {
+			if(birdFeeder.getDiceOutside().get(i).getFace().equals(FoodType.WILD)) {
 				g.drawImage(b6, x, y, 65,65 , null);
 			}
 		}
@@ -107,46 +98,25 @@ public class BirdFeederPanel extends JPanel {
 		drawBirdFeeder(g);
 	}
 
+	/*
 	public void updateBirdFeeder(ArrayList<Integer> foodInside, ArrayList<Integer> foodOutside) {
 
 		this.foodInside = foodInside;
 		this.foodOutside = foodOutside;
 
 	}
+	*/
 
 	public void reroll() { // re-roll all die
 
-		foodInside.clear();
-		foodOutside.clear();
-
-		for (int i = 0; i < NUM_DICE; i++) {
-
-			Random random = new Random();
-			int r = random.nextInt(6) + 1;
-			
-			foodInside.add(r);
-		}
-
+		birdFeeder.rerollIfAllSame();
 		repaint();
+
 	}
 
-	public void take(int die) { // take a die from inside to outside
+	public void take(FoodType type) { // take a die from inside to outside
 
-		for (int i = 0; i < foodInside.size(); i++) {
-			if (foodInside.get(i) == die) {
-				foodInside.remove(i);
-				foodOutside.add(die);
-				break;
-			}
-		}
+		birdFeeder.take(type);
 		
-		reroll();
-	}
-	
-	private void printList(ArrayList<Integer> list) {
-		System.out.println("list");
-		for(int i=0; i<list.size(); i++) {
-			System.out.println(list.get(i)+" ");
-		}
 	}
 }
